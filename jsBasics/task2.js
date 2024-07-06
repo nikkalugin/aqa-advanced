@@ -1,8 +1,8 @@
-let FirstPerson = 'Nik Johnson';
-let SecondPerson = 'Vicky Birmingham'
+let firstPerson = 'Nik Johnson';
+let secondPerson = 'Vicky Birmingham'
 
-let greeting = 'Welcome, ' + FirstPerson + ' and ' + SecondPerson + '!';
+let greeting = 'Welcome, ' + firstPerson + ' and ' + secondPerson + '!';
 console.log(greeting);
 
-let greeting1 = `Welcome, ${FirstPerson} and ${SecondPerson}!`;
+let greeting1 = `Welcome, ${firstPerson} and ${secondPerson}!`;
 console.log(greeting1);
