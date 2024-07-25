@@ -19,21 +19,21 @@ function countDivisors(n) {
 
     }
 
-    return arr.length
+    return arr
 }
 
 const number1 = 4;
 const result1 = countDivisors(number1);
-console.log(`Number of divisors for ${number1}: ${result1}`);
+console.log(`Number of divisors for ${number1}: ${result1.length} divisors - ${result1}`);
 
 const number2 = 5;
 const result2 = countDivisors(number2);
-console.log(`Number of divisors for ${number2}: ${result2}`);
+console.log(`Number of divisors for ${number2}: ${result2.length} divisors - ${result2}`);
 
 const number3 = 12;
 const result3 = countDivisors(number3);
-console.log(`Number of divisors for ${number3}: ${result3}`);
+console.log(`Number of divisors for ${number3}: ${result3.length} divisors - ${result3}`);
 
 const number4 = 30;
 const result4 = countDivisors(number4);
-console.log(`Number of divisors for ${number4}: ${result4}`);
+console.log(`Number of divisors for ${number4}: ${result4.length} divisors - ${result4}`);
