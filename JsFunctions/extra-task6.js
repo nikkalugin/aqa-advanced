@@ -31,9 +31,9 @@ function countFeelings(string, array) {
 
   for (let i = 0; i < string.length; i++) {
     let current = string[i];
-    for (let [feeling, count] of feelingMap) {
+    for (let feeling of feelingMap.keys()) {
       if (feeling.startsWith(current)) {
-        feelingMap.set(feeling, count + 1);
+        feelingMap.set(feeling, feelingMap.get(feeling) + 1);
       }
     }
   }
