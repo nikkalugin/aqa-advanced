@@ -51,7 +51,7 @@ async function fetchDataWithPromiseRace() {
             toDoService.getToDo(3),
             userService.getUser(5),
         ]);
-        console.log('First resolved promise: ', result);
+        console.log('Перший resolved promise: ', result);
     } catch (error) {
         console.error('Error fetching data: ', error);
     }
