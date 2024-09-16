@@ -12,12 +12,10 @@ describe('Lection 20 Homework', () => {
     })
 
     it('Add car to Garage', () => {
-        AddCarPage.openAddCarModel();
         AddCarPage.addCar('Porsche', 'Cayenne', '600');
     });
 
     it('Add fuel expenses to created car', () => {
-        AddExpensePage.openAddExpenseModal();
-        AddExpensePage.addFuelExpense('800', '350', '60 000'); 
+        AddExpensePage.FillInAllExpenseData('1000', '350', '60 000'); 
     });
 })

@@ -30,8 +30,9 @@ class AddExpensePage {
     }
     
     FillInAllExpenseData(mileage, liters, totalCost) {
-      this.addExpenseMileage.type(mileage);
-      this.addExpenseDate.click();
+      this.openAddExpenseModal.first().click();
+      this.addExpenseMileage.clear().type(mileage);
+      this.addExpenseDate.clear().type('16.09.2024');
       this.addExpenseLiters.type(liters);
       this.addExpenseTotalCost.type(totalCost);
       this.PressExpenseButton.click();

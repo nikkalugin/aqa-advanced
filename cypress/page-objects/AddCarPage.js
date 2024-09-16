@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 class AddCarPage {
-    get openAddCarModel() {
+    get openAddCarModal() {
       return cy.get('.btn-primary');
     }
   
@@ -26,6 +26,7 @@ class AddCarPage {
     }
 
     addCar(brand, model, mileage) {
+      this.openAddCarModal.first().click();
       this.addCarBrand.select(brand);
       this.addCarModel.select(model);
       this.addCarMileage.type(mileage);
