@@ -2,7 +2,7 @@
 
 describe('Завдання 1', () => {
     const credentials = {
-        email: "expeditiontomysoul+testuser3@gmail.com",
+        email: "expeditiontomysoul+testuser5@gmail.com",
         password: "For_The_Horde99"
     };
 
@@ -22,30 +22,30 @@ describe('Завдання 1', () => {
         "country": "Ukraine"
     };
 
-    beforeEach(() => {
-        cy.visit('https://qauto.forstudy.space/', {
-            auth: {
-                username: 'guest',
-                password: 'welcome2qauto',
-            }
+    before(() => {
+        const userInfo = {
+            "email": "expeditiontomysoul+testuser5@gmail.com",
+            "password": "For_The_Horde99",
+            "remember": false
+        }
+        cy.request({ method: 'POST', url: '/api/auth/signin', body: userInfo, failOnStatusCode: false }).then((response) => {
+            const cookies = response.headers["set-cookie"][0];
+            const cookiesValue = cookies.split(';')[0];
+            cy.log(JSON.stringify(cookiesValue));
+            expect(response.status).to.eq(200);
         })
-        cy.get('.header_signin').click();
-        cy.get('#signinEmail').type('expeditiontomysoul+testuser3@gmail.com');
-        cy.get('#signinPassword').type('For_The_Horde99');
-        cy.contains('Login').click();
-        cy.contains('You have been successfully logged in').should('be.visible');
     })
 
     it('GET "Gets current user cars"', () => {
         cy.request('GET', '/api/cars').then((response) => {
-            cy.log(JSON.stringify(response));
+            cy.log(JSON.stringify(response.body.data));
             expect(response.status).to.eq(200);
         });
     });
 
     it('GET "Gets car brands"', () => {
         cy.request('GET', '/api/cars/brands').then((response) => {
-            cy.log(JSON.stringify(response));
+            cy.log(JSON.stringify(response.body.data));
             expect(response.status).to.eq(200);
             expect(response.body.data.length).to.eq(5);
         });
@@ -53,7 +53,7 @@ describe('Завдання 1', () => {
 
     it('GET "Gets car models"', () => {
         cy.request('GET', '/api/cars/models').then((response) => {
-            cy.log(JSON.stringify(response));
+            cy.log(JSON.stringify(response.body.data));
             expect(response.status).to.eq(200);
             expect(response.body.data.length).to.eq(23);
         });
@@ -61,7 +61,7 @@ describe('Завдання 1', () => {
 
     it('GET "Gets all expenses"', () => {
         cy.request('GET', '/api/expenses?carId=5&page=1').then((response) => {
-            cy.log(JSON.stringify(response));
+            cy.log(JSON.stringify(response.body.data));
             expect(response.status).to.eq(200);
             expect(response.body.currentPage).to.eq(1);
         });
@@ -79,7 +79,6 @@ describe('Завдання 1', () => {
         cy.request({method: 'PUT', url: `/api/users/profile`, body: userProfile, headers: {'Cookie': cookiesValue}, failOnStatusCode: false}).then((response) => {
             cy.log(JSON.stringify(response));
             expect(response.status).to.eq(200);
-            expect(response.body.data.userId).to.eq(140627);
             expect(response.body.data.country).to.eq('Ukraine');
         });
     });
@@ -88,7 +87,6 @@ describe('Завдання 1', () => {
         cy.request({method: 'POST', url: '/api/auth/signin', body: credentials, failOnStatusCode: false}).then((response) => {
             cy.log(JSON.stringify(response));
             expect(response.status).to.eq(200);
-            expect(response.body.data.userId).to.eq(140627);
             expect(response.body.data.currency).to.eq('usd');
         });
     });
@@ -100,8 +98,8 @@ describe('Завдання 1', () => {
         });
     });
 
-    it.only('DELETE "Deletes existing car"', () => {
-        cy.request({method: 'DELETE', url: `/api/cars/1`, body: carInfo, headers: {'Cookie': cookiesValue}, failOnStatusCode: false}).then((response) => {
+    it('DELETE "Deletes existing car"', () => {
+        cy.request({method: 'DELETE', url: `/api/cars/`, body: carInfo, headers: {'Cookie': cookiesValue}, failOnStatusCode: false}).then((response) => {
             cy.log(JSON.stringify(response));
             expect(response.status).to.eq(200);
         });
