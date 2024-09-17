@@ -21,22 +21,22 @@ class AddExpensePage {
       return cy.get('#addExpenseTotalCost');
     }
     
-    get PressExpenseButton() {
+    get pressExpenseButton() {
       return cy.get('app-add-expense-modal .btn-primary');
     }
     
-    get ExpenseNotification() {
+    get expenseNotification() {
       return cy.contains('Fuel expense added');
     }
     
-    FillInAllExpenseData(mileage, liters, totalCost) {
+    addAndVerifyExpenseForCar(mileage, liters, totalCost) {
       this.openAddExpenseModal.first().click();
       this.addExpenseMileage.clear().type(mileage);
-      this.addExpenseDate.clear().type('16.09.2024');
+      this.addExpenseDate.clear().type('17.09.2024');
       this.addExpenseLiters.type(liters);
       this.addExpenseTotalCost.type(totalCost);
-      this.PressExpenseButton.click();
-      this.ExpenseNotification.should('be.visible');
+      this.pressExpenseButton.click();
+      this.expenseNotification.should('be.visible');
     }
 }
   

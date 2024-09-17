@@ -25,7 +25,7 @@ class AddCarPage {
       return cy.contains('Car added');
     }
 
-    addCar(brand, model, mileage) {
+    addAndVerifyCar(brand, model, mileage) {
       this.openAddCarModal.first().click();
       this.addCarBrand.select(brand);
       this.addCarModel.select(model);
