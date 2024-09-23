@@ -1,18 +1,46 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.describe('Locators', () => {
+  test('getByRole', async ({ page }) => {
+    await page.goto('');
+    await expect(page.getByRole('heading', {level: 1})).toBeVisible();
+  })
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
+  test('getByText', async ({ page }) => {
+    await page.goto('');
+    await expect(page.getByText('Do more!', {exact: true})).toBeVisible();
+  })
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  test('getByLabel', async ({ page }) => {
+    await page.goto('');
+    await page.getByText('Sign In').click();
+    await expect(page.getByLabel('Email')).toBeVisible();
+  })
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  test('hasText', async ({ page }) => {
+    await page.goto('');
+    await page.locator('//button', {hasText: 'Sign up'}).click();
+  })
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-});
+  test('has', async ({ page }) => {
+    await page.goto('');
+
+    const fbIcon = page.locator('.icon-facebook'); 
+
+    await page.locator('//a', {has: fbIcon}).click();
+  })
+
+  test('multiple elements', async ({ page }) => {
+    await page.goto('');
+
+    console.log('Number of elements' + await page.locator('.socials_icon').count());
+  })
+
+  test('Text', async ({ page }) => {
+    await page.goto('');
+    await page.getByText('Sign In').click();
+    await page.locator('#signinEmail').fill('test@example.com');
+    await page.locator('#signinPassword').fill('123123123');
+    await page.locator('//*[@class="modal-content"]//button[@class="btn btn-primary]').click();
+  })
+})
