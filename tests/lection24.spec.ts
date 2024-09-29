@@ -14,23 +14,23 @@ test.describe('Field "Name" tests', () => {
     await homePage.openSignUpForm();
   })
     test('Name is required error', async () => {
-      await signUpForm.triggerErrorOnFirstNameField()
+      await signUpForm.triggerErrorOnFirstNameField();
       await signUpForm.verifyErrorText('Name required');
     })
 
     test('Name is invalid error', async () => {
-      await signUpForm.enterValueAndTriggerErrorOnFirstNameField('123123')
+      await signUpForm.enterValueAndTriggerErrorOnFirstNameField('123123');
       await signUpForm.verifyErrorText('Name is invalid');
     })
 
     test('Wrong length for name error', async () => {
-      await signUpForm.enterValueAndTriggerErrorOnFirstNameField('q')
+      await signUpForm.enterValueAndTriggerErrorOnFirstNameField('q');
       await signUpForm.verifyErrorText('Name has to be from 2 to 20 characters long');
     })
 
     test('Border color red error', async () => {
-      await signUpForm.triggerErrorOnFirstNameField()
-      await signUpForm.verifyBorderColorRedAtFirstNameField()
+      await signUpForm.triggerErrorOnFirstNameField();
+      await signUpForm.verifyBorderColorRedAtFirstNameField();
     })
 })
 
@@ -61,7 +61,7 @@ test.describe('Field "Last Name" tests', () => {
 
     test('Border color red error', async () => {
       await signUpForm.triggerErrorOnLastNameField();
-      await signUpForm.verifyBorderColorRedAtLastNameField()
+      await signUpForm.verifyBorderColorRedAtLastNameField();
     })
 })
 
@@ -102,7 +102,7 @@ test.describe('Field "Password" tests', () => {
     await homePage.openSignUpForm();
   })
     test('Password required error', async () => {
-      await signUpForm.triggerErrorOnPasswordField()
+      await signUpForm.triggerErrorOnPasswordField();
       await signUpForm.verifyErrorText('Password required');
     })
 
@@ -112,8 +112,8 @@ test.describe('Field "Password" tests', () => {
     })
 
     test('Border color red error', async () => {
-      await signUpForm.triggerErrorOnPasswordField()
-      await signUpForm.verifyBorderColorRedAtPasswordField()
+      await signUpForm.triggerErrorOnPasswordField();
+      await signUpForm.verifyBorderColorRedAtPasswordField();
     })
 })
 
