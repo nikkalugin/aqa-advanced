@@ -6,7 +6,6 @@ import { GaragePage } from "../page-objects/pages/GaragePage";
 import { test } from '../test-data/fixtures/fixtureBase'
 
 test.describe(('GaragePage with POM'), () => {
-    test.use({ storageState: 'test-data/states/mainUserState.json' });
     let homePage: HomePage;
     let signInForm: SignInForm;
 

@@ -1,19 +1,19 @@
 import { test as base } from '@playwright/test';
-import { HomePage } from '../../page-objects/pages/HomePage';
 import { SignInForm } from '../../page-objects/components/forms/SignInForm';
 import { GaragePage } from '../../page-objects/pages/GaragePage';
-import { Page } from '@playwright/test';
 
 type MyFixtures = {
     garagePageWithEditing: GaragePage;
     signInForm: SignInForm;
-    pageSmall: Page;
 };
 
 export const test = base.extend<MyFixtures>({
-    garagePageWithEditing: async ({ page }, use) => {
-        let garagePage = new GaragePage(page);
-        test.use({ storageState: 'test-data/states/mainUserState.json' });
+    garagePageWithEditing: async ({ browser }, use) => {
+        const context = await browser.newContext({ 
+            storageState: 'test-data/states/mainUserState.json' 
+        });
+        const page = await context.newPage();
+        const garagePage = new GaragePage(page);
         await garagePage.open();
         await use(garagePage);
         await page.locator('.icon-edit').first().click();
