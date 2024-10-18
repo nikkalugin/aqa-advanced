@@ -1,3 +1,8 @@
+module.exports = {
+    testEnvironment: 'node',
+    testMatch: ['**/tests/**/*.test.js'],
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+};
 /**
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
