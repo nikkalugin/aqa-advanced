@@ -12,7 +12,6 @@ require('dotenv').config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -29,6 +28,10 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'https://qauto.forstudy.space',
+    httpCredentials: {
+      username: 'guest',
+      password: 'welcome2qauto',
     baseURL: process.env.BASE_URL,
     httpCredentials: {
       username: process.env.HTTP_CREDENTIALS_USERNAME || 'test',
@@ -41,6 +44,14 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
       name: 'setup',
       use: { ...devices['Desktop Chrome'] },
       testMatch: '*setup/*.ts'
