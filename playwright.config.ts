@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
+require('dotenv').config();
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -31,6 +32,10 @@ export default defineConfig({
     httpCredentials: {
       username: 'guest',
       password: 'welcome2qauto',
+    baseURL: process.env.BASE_URL,
+    httpCredentials: {
+      username: process.env.HTTP_CREDENTIALS_USERNAME || 'test',
+      password: process.env.HTTP_CREDENTIALS_PASSWORD || 'test',
     },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -47,6 +52,22 @@ export default defineConfig({
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
     // },
+      name: 'setup',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '*setup/*.ts'
+    },
+
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup']
+    },
+
+    {
+      name: 'api',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '*api/*.ts'
+    },
 
     // {
     //   name: 'webkit',
