@@ -17,33 +17,21 @@ test.describe('Task2 for Lection 28', () => {
       });
 
     test('Successful adding car with Status 201', async () => {
-        const response = await carsController.createCar({
-            carBrandId: 1,
-            carModelId: 5,
-            mileage: 15000
-        });
+        const response = await carsController.createCar(1, 5, 15000);
         const body = await response.json();
         expect(response.status()).toBe(201);
         expect(body.data.brand).toEqual('Audi');
     });
 
-    test('Unsuccessful adding unfounded model with Status 404', async () => {
-        const response = await carsController.createCar({
-            carBrandId: 2,
-            carModelId: 11,
-            mileage: 15000
-        });
+    test('Unsuccessful adding unfounded model value with Status 404', async () => {
+        const response = await carsController.createCar(2, 11, 15000);
         const body = await response.json();
         expect(response.status()).toBe(404);
         expect(body.message).toContain('Model not found');
     });
 
     test('Unsuccessful adding invalid mileage value with Status 400', async () => {
-        const response = await carsController.createCar({
-            carBrandId: 3,
-            carModelId: 13,
-            mileage: 1000000
-        });
+        const response = await carsController.createCar(3, 13, 1000000);
         const body = await response.json();
         expect(response.status()).toBe(400);
         expect(body.message).toContain('Mileage has to be from 0 to 999999');
