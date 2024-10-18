@@ -14,3 +14,14 @@ module.exports = defineConfig({
     passwordLog: 'For_The_Horde99'
   }
 });
+const { defineConfig } = require("cypress");
+
+module.exports = defineConfig({
+  e2e: {
+    baseUrl: 'https://www.saucedemo.com/',
+    video: true,
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
+  },
+});
