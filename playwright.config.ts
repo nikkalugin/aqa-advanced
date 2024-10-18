@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
+
 require('dotenv').config();
 /**
  * Read environment variables from file.
@@ -32,6 +33,7 @@ export default defineConfig({
     httpCredentials: {
       username: 'guest',
       password: 'welcome2qauto',
+
     baseURL: process.env.BASE_URL,
     httpCredentials: {
       username: process.env.HTTP_CREDENTIALS_USERNAME || 'test',
@@ -52,6 +54,7 @@ export default defineConfig({
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
     // },
+
       name: 'setup',
       use: { ...devices['Desktop Chrome'] },
       testMatch: '*setup/*.ts'
