@@ -1,5 +1,11 @@
 {
   "devDependencies": {
+    "cypress": "^13.14.2"
+  },
+  "dependencies": {
+    "cypress-plugin-api": "^2.11.2"
+  }
+}
     "cypress": "^13.14.2",
     "mochawesome": "^7.1.3"
   },

@@ -1,3 +1,4 @@
+
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
@@ -18,10 +19,14 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    baseUrl: 'https://qauto.forstudy.space/',
     baseUrl: 'https://www.saucedemo.com/',
     video: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
   },
+
+});
+
 });

@@ -1,3 +1,4 @@
+
 Cypress.Commands.add('login', (username, password) => {
   
     cy.get('#signinEmail').type(username);
@@ -41,4 +42,5 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
 //
 //
 // -- This will overwrite an existing command --
+// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
