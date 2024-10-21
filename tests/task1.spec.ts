@@ -19,8 +19,8 @@ test.describe(('Task1 for Lection 28'), () => {
             "data": {
                 "userId": 151289,
                 "photoFilename": "default-user.png",
-                "name": "ДІМОН",
-                "lastName": "НАЙКРАЩИЙ"
+                "name": "СКИНЬ",
+                "lastName": "ГРУДИ"
             }
         }
         await page.route('**/api/users/profile', route => route.fulfill({
@@ -33,7 +33,7 @@ test.describe(('Task1 for Lection 28'), () => {
 
     test(`Getting to profile`, async ({ page }) => {
         await page.locator('.-profile').click();
-        await expect(page.locator('.profile_name')).toHaveText('ДІМОН НАЙКРАЩИЙ');
+        await expect(page.locator('.profile_name')).toHaveText('СКИНЬ ГРУДИ');
     })
 
 })
