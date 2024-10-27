@@ -1,8 +1,10 @@
 import { test as base } from '@playwright/test';
+import { SignInForm } from '../../page-objects/components/forms/SignInForm';
 import { GaragePage } from '../../page-objects/pages/GaragePage';
 
 type MyFixtures = {
     garagePageWithEditing: GaragePage;
+    signInForm: SignInForm;
 };
 
 export const test = base.extend<MyFixtures>({
