@@ -7,6 +7,11 @@ export class HomePage {
 
     constructor(page: Page) {
         this.page = page;
+        this.signInButton = page.locator('.header_signin');
+    }
+
+    async open() {
+        await this.page.goto('/');
         this.signUpButton = page.getByText('Sign up');
         this.signInButton = page.getByText('Sign In');
     }
